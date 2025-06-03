@@ -1,0 +1,151 @@
+<!DOCTYPE html>
+<html lang="en">
+  <head>
+    <meta charset="UTF-8" />
+    <title>Hê và lô Tú AnhhhhhhhhhhhhhAnhhhhhhhhhhhhh</title>
+    <link
+      href="https://fonts.googleapis.com/css?family=Pacifico|Dancing+Script|Lobster&display=swap"
+      rel="stylesheet"
+    />
+    <style>
+      body {
+        margin: 0;
+        overflow: hidden;
+        background: #ffe6f2; /* Hồng nhạt */
+        color: #ff4da6;
+        font-family: "Pacifico", "Dancing Script", "Lobster", cursive;
+      }
+      .floating {
+        position: absolute;
+        animation: float 10s linear infinite;
+        font-size: 2rem;
+        white-space: nowrap;
+        opacity: 0.9;
+        font-family: "Pacifico", "Dancing Script", "Lobster", cursive;
+        text-shadow: 1px 1px 8px #fff;
+        letter-spacing: 2px;
+      }
+      .heart {
+        position: absolute;
+        width: 32px;
+        height: 32px;
+        background: transparent;
+        transform: rotate(45deg);
+        animation: float 8s linear infinite;
+        z-index: 2;
+      }
+      .heart::before,
+      .heart::after {
+        content: "";
+        position: absolute;
+        width: 32px;
+        height: 32px;
+        border-radius: 50%;
+        border: 3px solid #fff; /* Viền trắng */
+        background: transparent;
+        box-shadow: 0 4px 16px #ffb3d1; /* Hiệu ứng 3D */
+      }
+      .heart::before {
+        top: -16px;
+        left: 0;
+        border-bottom: 0;
+        border-right: 0;
+        box-shadow: 0 4px 16px #ffb3d1;
+      }
+      .heart::after {
+        left: -16px;
+        top: 0;
+        border-bottom: 0;
+        border-left: 0;
+        box-shadow: 0 4px 16px #ffb3d1;
+      }
+      .heart-inner {
+        position: absolute;
+        width: 32px;
+        height: 32px;
+        background: #ff4da6;
+        border-radius: 50% 50% 0 0;
+        top: 8px;
+        left: 0;
+        z-index: -1;
+        box-shadow: 0 8px 24px #ffb3d1;
+        clip-path: polygon(0 0, 100% 0, 50% 100%);
+      }
+      @keyframes float {
+        0% {
+          top: 100%;
+          left: calc(100% * var(--x));
+          opacity: 0;
+        }
+        10% {
+          opacity: 1;
+        }
+        100% {
+          top: -50px;
+          left: calc(100% * var(--x) + 50px);
+          opacity: 0;
+        }
+      }
+      .center-message {
+        position: absolute;
+        top: 40%;
+        left: 50%;
+        transform: translate(-50%, -50%);
+        font-size: 2.5rem;
+        color: #ff4da6;
+        font-family: "Pacifico", "Dancing Script", "Lobster", cursive;
+        text-shadow: 2px 2px 12px #fff;
+        background: rgba(255, 255, 255, 0.2);
+        padding: 24px 48px;
+        border-radius: 32px;
+        border: 2px solid #ffb3d1;
+        z-index: 10;
+        letter-spacing: 2px;
+      }
+    </style>
+  </head>
+  <body>
+    <div class="center-message">
+      💖💖💖💖💖💖💖💖💖💖💖💖💖💖💖💖💖💖💖💖💖💖💖💖💖💖💖💖💖💖💖💖💖
+    </div>
+    <script>
+      const messages = [
+        "Tú Anh xênh gái 💗",
+        "I love youuuuu chu ca mo 💑",
+        " 💖",
+        " 💋",
+        " 💞",
+      ];
+
+      function createFloatingText() {
+        const div = document.createElement("div");
+        div.className = "floating";
+        const x = Math.random();
+        const y = Math.random(); // Thêm biến y để dàn đều theo chiều dọc
+        div.style.setProperty("--x", x);
+        div.style.left = x * (window.innerWidth - 200) + "px"; // Tránh tràn lề
+        div.style.top = y * (window.innerHeight - 50) + "px";
+        div.textContent = messages[Math.floor(Math.random() * messages.length)];
+        document.body.appendChild(div);
+        setTimeout(() => div.remove(), 10000);
+      }
+
+      function createHeart() {
+        const heart = document.createElement("div");
+        heart.className = "heart";
+        heart.style.setProperty("--x", Math.random());
+        heart.style.top = "100%";
+        heart.style.left = Math.random() * window.innerWidth + "px";
+        // Thêm phần bên trong trái tim
+        const inner = document.createElement("div");
+        inner.className = "heart-inner";
+        heart.appendChild(inner);
+        document.body.appendChild(heart);
+        setTimeout(() => heart.remove(), 8000);
+      }
+
+      setInterval(createFloatingText, 1200);
+      setInterval(createHeart, 900);
+    </script>
+  </body>
+</html>
